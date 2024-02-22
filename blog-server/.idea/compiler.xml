@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="doufu-system" />
+        <module name="doufu-blog" />
+        <module name="doufu-quartz" />
+        <module name="doufu-common" />
+        <module name="doufu-framework" />
+        <module name="doufu-generator" />
+        <module name="doufu-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="doufu-device" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="doufu-admin" options="" />
+      <module name="doufu-blog" options="" />
+      <module name="doufu-common" options="" />
+      <module name="doufu-device" options="" />
+      <module name="doufu-framework" options="" />
+      <module name="doufu-generator" options="" />
+      <module name="doufu-quartz" options="" />
+      <module name="doufu-system" options="" />
+    </option>
+  </component>
+</project>

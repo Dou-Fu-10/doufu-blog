@@ -1,0 +1,12 @@
+com\doufu\generator\service\IGenTableColumnService.class
+com\doufu\generator\config\GenConfig.class
+com\doufu\generator\service\GenTableServiceImpl.class
+com\doufu\generator\mapper\GenTableMapper.class
+com\doufu\generator\mapper\GenTableColumnMapper.class
+com\doufu\generator\domain\GenTableColumn.class
+com\doufu\generator\service\GenTableColumnServiceImpl.class
+com\doufu\generator\util\VelocityInitializer.class
+com\doufu\generator\util\GenUtils.class
+com\doufu\generator\domain\GenTable.class
+com\doufu\generator\util\VelocityUtils.class
+com\doufu\generator\service\IGenTableService.class
