@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import {Article} from "@/types/article";
+import { Article } from "@/types/article";
+import postMeta from "@/components/post-meta.vue";
 
 const props = defineProps<{
   post: Article
@@ -14,17 +15,16 @@ const minutes = date.getMinutes();
 const seconds = date.getSeconds();
 
 const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
 </script>
 
 <template>
   <!--文章-->
-  <article class="post">
+  <div class="post">
     <el-card :body-style="{ padding: '0px' }">
       <!--文章封面-->
       <div class="cover">
         <router-link :to="`/article/${props.post.articleId}`">
-          <el-image class="image" :src="props.post.articleCover" fit="cover"/>
+          <el-image class="image" :src="props.post.articleCover" fit="cover" />
         </router-link>
       </div>
       <!--文章信息-->
@@ -33,7 +33,9 @@ const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         <div class="info-head">
           <!--文章创建时间-->
           <div class="create-time">
-            发布于 {{ formattedDate }}
+            <el-icon size="14">
+              <Calendar />
+            </el-icon> 发布于 {{ formattedDate }}
           </div>
           <!--文章标题-->
           <div class="title">
@@ -45,42 +47,8 @@ const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         </div>
         <!--文章元素-->
         <div class="post-meta">
-
-          <ul class="info-meta">
-            <!-- 评论 -->
-            <li class="comments icon">
-                            <span>
-                                <!--评论图标-->
-                                <el-icon>
-                                    <Female/>
-                                </el-icon>
-                                {{ props.post.commentsCount }}条评论
-                            </span>
-            </li>
-            <el-divider direction="vertical"/>
-            <!-- 点赞 -->
-            <li class="like icon">
-                            <span>
-                                <!--点赞图标-->
-                                <el-icon>
-                                    <Female/>
-                                </el-icon>
-                                {{ props.post.viewsCount }}点赞
-                            </span>
-            </li>
-            <el-divider direction="vertical"/>
-            <!-- 热度 -->
-            <li class="views icon">
-                            <span>
-                                <!--热度图标-->
-                                <el-icon>
-                                    <Female/>
-                                </el-icon>
-                                {{ props.post.viewsCount }}热度
-                            </span>
-            </li>
-          </ul>
-
+          <post-meta :create-time="post.createTime" :comments-count="post.commentsCount"
+            :views-count="post.viewsCount"></post-meta>
           <!--文章摘要-->
           <p class="summary">{{ props.post.articleSummary }}</p>
           <!--页脚-->
@@ -93,25 +61,41 @@ const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
             </div>
           </div>
         </div>
-
       </div>
     </el-card>
-  </article>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-
+// 文章样式
 .post {
-  max-width: 400px;
-  min-width: 320px;
+
+  // 最大宽度
+  max-width: 415px;
+  // 最小宽度
+  min-width: 270px;
+  // 响应式宽度
+  width: calc(33.33% - 20px);
+  /* 初始每行显示3个div */
+  margin: 0 5px 20px;
+  // 过渡动画
+  transition: width 0.5s;
+
+  /* 添加过渡动画 */
   // 文章封面
   .cover {
+    overflow: hidden;
+
     .image {
+      vertical-align: top;
+      transition: all .6s;
       width: 100%;
-      height: 170px;
+      height: 200px;
+    }
+
+    // 移入图片变大
+    :hover .image {
+      transform: scale(1.3)
     }
   }
 
@@ -124,6 +108,8 @@ a {
 
       // 文章创建时间
       .create-time {
+        color: rgb(127, 127, 127);
+        // font-size: 13px;
       }
 
       // 文章标题
@@ -139,6 +125,9 @@ a {
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
           /* 根据需要设定行数 */
+          color: black;
+          line-height: 36px;
+
         }
       }
     }
@@ -146,26 +135,6 @@ a {
 
   // 文章元素
   .post-meta {
-    .info-meta {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-    }
-
-
-    // 评论
-    .comments {
-    }
-
-    // 点赞
-    .like {
-    }
-
-    // 热度
-    .views {
-    }
 
     // 文章摘要
     .summary {
@@ -200,4 +169,25 @@ a {
       }
     }
   }
-}</style>
+}
+
+.el-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  /* 移入时显示阴影 */
+}
+
+// 卡片圆角
+.el-card {
+  border:none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+// 根据不同的宽度决定div的宽度
+@media screen and (max-width: 1403px) {
+  .post {
+    width: calc(50% - 20px);
+    /* 当宽度达到最小宽度无法被调整时，显示两行 */
+  }
+}
+</style>

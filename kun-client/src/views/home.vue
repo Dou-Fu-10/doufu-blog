@@ -1,11 +1,11 @@
 <!-- 主页 -->
 <script lang="ts" setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import Post from "@/components/post.vue"
 import Aside from "@/components/aside/index.vue";
 import homeBanner from "@/components/banner/homeBanner.vue";
-import {select} from "@/api/article"
-import {Article} from "@/types/article";
+import { select } from "@/api/article"
+import { Article } from "@/types/article";
 
 const postList = ref<Array<Article>>([])
 
@@ -21,13 +21,15 @@ onMounted(async () => {
     <el-container>
       <!-- 侧边栏 -->
       <el-aside width="300px">
-        <Aside/>
+        <Aside></Aside>
       </el-aside>
       <!-- 内容区域 -->
       <el-main>
-        <template v-for="post in postList" :key="post.articleId">
-          <post class="post" :post="post"></post>
-        </template>
+        <div class="container">
+          <template v-for="post in postList" :key="post.articleId">
+            <post class="post" :post="post"></post>
+          </template>
+        </div>
       </el-main>
     </el-container>
   </div>
@@ -35,11 +37,15 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .home {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
-
-  .post {
-    margin: 0 10px 30px;
-  }
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
 </style>

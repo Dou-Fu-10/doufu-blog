@@ -16,8 +16,14 @@ export interface Article {
     isRecommend: boolean,
     reprint: string,
     editType: string,
-    createTime: Date,
-    updateTime: Date,
+    createTime: string,
+    updateTime: string,
     tags: Array<Tag>,
     category?: Category,
+}
+
+export interface PostMeta{
+    createTime: string,
+    viewsCount: number,
+    commentsCount: number,
 }

@@ -9,26 +9,26 @@ const links = ref([])
 
 const querySearch = (queryString: string, cb) => {
   const results = queryString
-      ? links.value.filter(createFilter(queryString))
-      : links.value
+    ? links.value.filter(createFilter(queryString))
+    : links.value
   // call callback function to return suggestion objects
   cb(results)
 }
 const createFilter = (queryString) => {
   return (restaurant) => {
     return (
-        restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
     )
   }
 }
 const loadAll = () => {
   return [
     { value: 'vue' },
-    { value: 'element'},
-    { value: 'cooking'},
+    { value: 'element' },
+    { value: 'cooking' },
     { value: 'mint-ui' },
     { value: 'vuex' },
-    { value: 'vue-router'},
+    { value: 'vue-router' },
     { value: 'babel' },
   ]
 }
@@ -46,27 +46,34 @@ onMounted(() => {
 </script>
 
 <template>
-    <el-card class="search">
-      <h3>搜索</h3>
-      <el-autocomplete
-          v-model="state"
-          :fetch-suggestions="querySearch"
-          popper-class="my-autocomplete"
-          placeholder="搜索文章"
-          @select="handleSelect"
-      >
-        <template #suffix>
-          <el-icon class="el-input__icon" @click="handleIconClick">
-            <el-icon><Search /></el-icon>
+  <el-card class="search">
+    <h3>搜索</h3>
+    <el-autocomplete v-model="state" :fetch-suggestions="querySearch" popper-class="my-autocomplete" placeholder="搜索文章"
+      @select="handleSelect">
+      <template #suffix>
+        <el-icon class="el-input__icon" @click="handleIconClick">
+          <el-icon>
+            <Search />
           </el-icon>
-        </template>
-        <template #default="{ item }">
-          <div class="value">{{ item.value }}</div>
-        </template>
-      </el-autocomplete>
-    </el-card>
+        </el-icon>
+      </template>
+      <template #default="{ item }">
+        <div class="value">{{ item.value }}</div>
+      </template>
+    </el-autocomplete>
+  </el-card>
 </template>
 
 <style scoped lang="scss">
+.search:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* 移入时显示阴影 */
+}
 
+// 卡片圆角
+.el-card {
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
 </style>

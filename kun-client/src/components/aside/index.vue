@@ -7,31 +7,25 @@ import search from "@/components/aside/search.vue"
 
 <template>
   <div class="aside">
-    <div>
-      <!--网站信息-->
-      <site/>
-    </div>
-    <div>
-      <!--搜索-->
-      <search/>
-    </div>
-    <div>
-      <!--推荐文章-->
-      <recommended/>
-    </div>
+    <!--网站信息-->
+    <site />
+    <!--搜索-->
+    <search />
+    <!--推荐文章-->
+    <recommended />
   </div>
 
 </template>
 
 <style scoped lang="scss">
 .aside {
+  margin: 15px;
+
   div {
     margin-bottom: 30px;
-    transition: box-shadow 0.5s ease; /* 添加过渡效果 */
+    transition: box-shadow 0.5s ease;
+    /* 添加过渡效果 */
   }
 
-  div:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 移入时显示阴影 */
-  }
 }
 </style>
