@@ -1,17 +1,14 @@
-<!--  -->
-<script lang="ts" setup>
+<script setup lang="ts">
+interface Book {
+  title: string
+  author: string
+  year: number
+}
 
+const props = defineProps<{book: Book}>()
 </script>
 
 <template>
-  <div style="  display: flex;">
-    <div>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>

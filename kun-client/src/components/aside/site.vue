@@ -9,10 +9,8 @@ const errorHandler = () => true
     <!--头像-->
     <div class="site-avatar">
       <el-avatar :size="100" fit="cover" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-                 @error="errorHandler">
-        <img
-            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-            alt=""/>
+        @error="errorHandler">
+        <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" alt="" />
       </el-avatar>
     </div>
     <!--作者名字-->
@@ -27,8 +25,8 @@ const errorHandler = () => true
         </router-link>
       </div>
 
-      <div class="site-state-item site-state-categories">
-        <router-link to="/categories/">
+      <div class="site-state-item site-state-category">
+        <router-link to="/category/">
           <div class="site-state-item-count">16</div>
           <div class="site-state-item-name">分类</div>
         </router-link>
@@ -56,8 +54,10 @@ const errorHandler = () => true
 
   div {
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
   }
 
   .site-author-name {
@@ -82,12 +82,26 @@ const errorHandler = () => true
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
   }
+}
+
+.site:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* 移入时显示阴影 */
+}
+
+// 卡片圆角
+.el-card {
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 </style>
